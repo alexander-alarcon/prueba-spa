@@ -18,6 +18,11 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      primary: '#155263',
+      secondary: '#ff6f3c',
+      third: '#ff9a3c',
+      contrast: '#ffc93c',
+
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
