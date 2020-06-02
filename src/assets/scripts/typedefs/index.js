@@ -5,3 +5,9 @@
  * @property {string} phone - contact's phone
  * @property {string} address - contact's address
  */
+
+/**
+ * @typedef {Object} ActionPayload
+ * @property {!string} type - Action identifier
+ * @property {*=} payload - Action payload
+ */

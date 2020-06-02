@@ -1,12 +1,16 @@
-import { pages } from '../controllers/index';
+import { pages } from '../controllers/';
+import store from '../store/';
 
+/**
+ * Handle App routes
+ * @param {!string} route - Url hash
+ */
 const router = async (route) => {
   let mainElement = document.getElementById('page');
 
-  window.addEventListener('message', ({ data }) => {
-    if (data.type === 'refresh') {
-      render();
-    }
+  store.subscribe(({ contacts }) => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+    render();
   });
 
   function render() {

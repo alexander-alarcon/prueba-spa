@@ -1,70 +1,9 @@
 import contactList from '../components/contactList';
 import searchBar from '../components/searchBar';
 
-const dummy = [
-  {
-    id: 1,
-    name: 'Candi',
-    address: 'Bentje',
-    phone: 'cbentje0@mit.edu',
-  },
-  {
-    id: 2,
-    name: 'Carey',
-    address: 'Stidworthy',
-    phone: 'cstidworthy1@cargocollective.com',
-  },
-  {
-    id: 3,
-    name: 'Riki',
-    address: 'MacEllen',
-    phone: 'rmacellen2@princeton.edu',
-  },
-  {
-    id: 4,
-    name: 'Wini',
-    address: 'Pray',
-    phone: 'wpray3@yandex.ru',
-  },
-  {
-    id: 5,
-    name: 'Jen',
-    address: 'Madsen',
-    phone: 'jmadsen4@dell.com',
-  },
-  {
-    id: 6,
-    name: 'Clywd',
-    address: 'Britner',
-    phone: 'cbritner5@goodreads.com',
-  },
-  {
-    id: 7,
-    name: 'Jobi',
-    address: 'Eykelbosch',
-    phone: 'jeykelbosch6@1688.com',
-  },
-  {
-    id: 8,
-    name: 'Sherlock',
-    address: 'Battista',
-    phone: 'sbattista7@upenn.edu',
-  },
-  {
-    id: 9,
-    name: 'Glenine',
-    address: 'Colnett',
-    phone: 'gcolnett8@digg.com',
-  },
-  {
-    id: 10,
-    name: 'Mechelle',
-    address: 'Owthwaite',
-    phone: 'mowthwaite9@photobucket.com',
-  },
-];
-localStorage.setItem('contacts', JSON.stringify(dummy));
-let data = JSON.parse(localStorage.getItem('contacts'));
+import { getVisibleContacts } from '../store/selectors';
+import generateId from '../utils/generateId';
+import store from '../store';
 
 const searchBtnHandler = (e) => {
   console.log('Button was clicked');
@@ -74,20 +13,35 @@ const inputSearchHandler = (e) => {
   console.log(e.target.value);
 };
 
+/**
+ * Dispacth a delete action
+ * @param {!string} id - Contact's id to be deleted
+ */
 const deleteContact = (id) => {
-  const idx = data.findIndex((el) => el.id === id);
-  if (idx > -1) {
-    data.splice(idx, 1);
-    localStorage.setItem('contacts', JSON.stringify(data));
-    window.postMessage({ type: 'refresh' });
-  }
+  store.dispatch({ type: 'REMOVE_CONTACT', payload: id });
+};
+
+/**
+ * Dispacth an add action
+ */
+const addContact = () => {
+  store.dispatch({
+    type: 'ADD_CONTACT',
+    payload: {
+      id: generateId(),
+      name: `Pepe ${Math.random() * 10}`,
+      address: `Calle Falsa ${Math.floor(Math.random() * 999)}`,
+      phone: 1234567,
+    },
+  });
 };
 
 function renderHomePage() {
-  data = JSON.parse(localStorage.getItem('contacts'));
+  const contacts = getVisibleContacts();
+
   const fragment = document.createDocumentFragment();
   fragment.appendChild(searchBar(searchBtnHandler, inputSearchHandler));
-  fragment.appendChild(contactList(data, deleteContact));
+  fragment.appendChild(contactList(contacts, deleteContact, addContact));
   return fragment;
 }
 

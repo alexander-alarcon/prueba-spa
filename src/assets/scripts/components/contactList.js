@@ -12,7 +12,7 @@ const editHandler = (id) => {
  * @param {!function} deleteHandler - function that will be execute to delete an item
  * @returns {HTMLDivElement}
  */
-function createContactListElement(contacts, deleteHandler) {
+function createContactListElement(contacts, deleteHandler, addHandler) {
   const contactListTpl = document.getElementById('contact-list-tpl');
   const contactListElement = contactListTpl.content.cloneNode(true)
     .firstElementChild;
@@ -20,6 +20,7 @@ function createContactListElement(contacts, deleteHandler) {
   const newContactButton = document.createElement('button');
   newContactButton.textContent = 'Nuevo';
   newContactButton.className = 'btn btn-primary mt-4';
+  newContactButton.addEventListener('click', addHandler);
   if (contacts.length === 0) {
     const pElement = document.createElement('p');
     pElement.textContent = 'No Contacts';
