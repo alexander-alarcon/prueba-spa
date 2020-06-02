@@ -4,7 +4,7 @@
  * @param {!function} inputAction - function that will be executed when the input changes its value
  * @returns {HTMLDivElement}
  */
-function renderSearchBar(btnAction, inputAction) {
+function createSearchBarElement(btnAction, inputAction) {
   const searchBarTpl = document.getElementById('search-bar-tpl');
   const searchBarElement = searchBarTpl.content.cloneNode(true);
   const btn = searchBarElement.querySelector('button');
@@ -14,4 +14,4 @@ function renderSearchBar(btnAction, inputAction) {
   return searchBarElement;
 }
 
-export default renderSearchBar;
+export default createSearchBarElement;
