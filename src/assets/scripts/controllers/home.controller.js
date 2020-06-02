@@ -1,12 +1,17 @@
-export default () => {
-  const ulElement = document.createElement('ul');
-  const fragment = document.createDocumentFragment();
-  [1, 2, 3, 4, 5].forEach((el) => {
-    const liElement = document.createElement('li');
-    liElement.textContent = `item ${el}`;
-    fragment.appendChild(liElement);
-  });
-  ulElement.appendChild(fragment);
+import searchBar from '../components/searchBar';
 
-  return ulElement;
+const searchBtnHandler = (e) => {
+  console.log('Button was clicked');
 };
+
+const inputSearchHandler = (e) => {
+  console.log(e.target.value);
+};
+
+function renderHomePage() {
+  const divElement = document.createElement('div');
+  divElement.appendChild(searchBar(searchBtnHandler, inputSearchHandler));
+  return divElement;
+}
+
+export default renderHomePage;

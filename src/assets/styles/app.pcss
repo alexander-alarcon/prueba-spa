@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+  @apply font-bold py-2 px-4 rounded outline-none
+}
+
+.btn-primary {
+  @apply border-primary border-2 text-primary transition-colors duration-200 ease-in-out
+}
+
+.btn-primary:hover {
+  @apply bg-primary text-white
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+  @apply outline-none
+}
+
