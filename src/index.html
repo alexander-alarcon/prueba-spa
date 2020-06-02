@@ -13,7 +13,44 @@
   </head>
   <body class="w-screen h-screen font-sans bg-first text-second">
     <header id="header">
-      <p>Here goes the header</p>
+      <nav class="w-screen bg-primary">
+        <div
+          id="btn-menu"
+          class="container mx-auto flex justify-end sm:hidden p-4 text-right text-2xl text-gray-400 cursor-pointer"
+        >
+          <svg
+            class="fill-current h-6 w-6"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </div>
+        <ul
+          id="menu-list"
+          class="container mx-auto hidden sm:flex h-full m-0 pb-4 sm:pb-0 overflow-hidden z-20"
+        >
+          <li
+            class="flex items-center px-4 sm:mx-2 sm:px-2 hover:bg-contrast hover:text-black text-gray-400 text-center cursor-pointer"
+          >
+            <a
+              href="/#/"
+              class="block sm:inline-block w-full py-4 px-0 text-base"
+              >Home</a
+            >
+          </li>
+          <li
+            class="flex items-center px-4 sm:mx-2 sm:px-2 hover:bg-contrast hover:text-black text-gray-400 text-center cursor-pointer"
+          >
+            <a
+              href="/#/contacts"
+              class="block sm:inline-block w-full py-4 px-0 text-base"
+              >Contacts</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
     <main id="page">
       <p>Here goes the main</p>
