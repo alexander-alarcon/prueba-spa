@@ -3,6 +3,9 @@ import typedefs from '../typedefs/';
 /**
  * Create a contact card
  * @param {!Contact} contact - Contact to be rendered
+ * @param {!function} onEdit - Function that will be executed when edit button is clicked
+ * @param {!function} onDelete - Function that will be executed when delete button is clicked
+ * @returns {HTMLDivElement}
  */
 function createContactElement(contact, onEdit, onDelete) {
   const contactTpl = document.getElementById('contact-tpl');

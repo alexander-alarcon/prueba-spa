@@ -6,16 +6,13 @@ const editHandler = (id) => {
   console.log(`Editing contact with id: ${id}`);
 };
 
-const deleteHandler = (id) => {
-  console.log(`Deleting contact with id: ${id}`);
-};
-
 /**
  * Create the contact list
  * @param {!Contact[]} contacts - array of contacts to be rendered
+ * @param {!function} deleteHandler - function that will be execute to delete an item
  * @returns {HTMLDivElement}
  */
-function createContactListElement(contacts) {
+function createContactListElement(contacts, deleteHandler) {
   const contactListTpl = document.getElementById('contact-list-tpl');
   const contactListElement = contactListTpl.content.cloneNode(true)
     .firstElementChild;

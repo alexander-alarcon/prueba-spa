@@ -3,15 +3,27 @@ import { pages } from '../controllers/index';
 const router = async (route) => {
   let mainElement = document.getElementById('page');
 
-  mainElement.innerHTML = '';
+  window.addEventListener('message', ({ data }) => {
+    if (data.type === 'refresh') {
+      render();
+    }
+  });
 
-  switch (route) {
-    case '':
-    case '#/':
-      return mainElement.appendChild(pages.home());
-    default:
-      return mainElement.appendChild(pages.notFound());
+  function render() {
+    mainElement.innerHTML = '';
+
+    switch (route) {
+      case '':
+      case '#/':
+        mainElement.appendChild(pages.home());
+        break;
+      default:
+        mainElement.appendChild(pages.notFound());
+        break;
+    }
   }
+
+  render();
 };
 
 export { router };
