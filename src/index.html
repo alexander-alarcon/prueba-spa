@@ -59,6 +59,7 @@
         Author: William Alarcon
       </p>
     </footer>
+
     <template id="search-bar-tpl">
       <div class="p-4 border-2 rounded-lg shadow-md">
         <div class="flex flex-col sm:flex-row w-10/12 mx-auto">
@@ -95,6 +96,33 @@
 
     <template id="contact-list-tpl">
       <div class="p-4 border-2 rounded-lg shadow-md"></div>
+    </template>
+
+    <template id="contact-tpl">
+      <div class="flex flex-col sm:flex-row p-4 border-2 rounded-lg shadow-md">
+        <div
+          class="flex flex-col flex-1 justify-center p-4 border-2 border-primary"
+        >
+          <div class="name-group flex flex-col sm:flex-row w-full">
+            <span class="inline-block w-1/3">Nombre:</span>
+            <span class="w-2/3"></span>
+          </div>
+          <div class="address-group flex flex-col sm:flex-row w-full">
+            <span class="inline-block w-1/3">Dirección:</span>
+            <span class="w-2/3"></span>
+          </div>
+          <div class="phone-group flex flex-col sm:flex-row w-full">
+            <span class="inline-block w-1/3">Teléfono:</span>
+            <span class="w-2/3"></span>
+          </div>
+        </div>
+        <div
+          class="actions flex flex-col justify-evenly mt-4 sm:mt-0 p-0 sm:pl-4"
+        >
+          <button class="btn btn-primary my-1">Editar</button>
+          <button class="btn btn-primary my-1">Eliminar</button>
+        </div>
+      </div>
     </template>
   </body>
 </html>
