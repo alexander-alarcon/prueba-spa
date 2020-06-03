@@ -2,37 +2,83 @@ import typedefs from '../typedefs/';
 
 import Contact from './contact';
 
-const editHandler = (id) => {
-  console.log(`Editing contact with id: ${id}`);
+import generateId from '../utils/generateId';
+
+import { getVisibleContacts } from '../store/selectors';
+import store from '../store';
+
+/**
+ * Dispacth a delete action
+ * @param {!MouseEvent} id - Contact's id to be deleted
+ */
+const handleClick = (e) => {
+  const { target } = e;
+
+  const action = target.getAttribute('data-action');
+
+  if (action) {
+    const ancestor = target.parentElement.parentElement;
+    const id = ancestor.getAttribute('data-id');
+
+    if (action === 'delete') {
+      if (confirm('Eliminar?')) {
+        store.dispatch({ type: 'REMOVE_CONTACT', payload: id });
+      }
+    }
+
+    if (action === 'edit') {
+      console.log(id);
+    }
+  }
+};
+
+/**
+ * Dispacth an add action
+ */
+const handleAdd = () => {
+  store.dispatch({
+    type: 'ADD_CONTACT',
+    payload: {
+      id: generateId(),
+      name: `Pepe ${Math.random() * 10}`,
+      address: `Calle Falsa ${Math.floor(Math.random() * 999)}`,
+      phone: 1234567,
+    },
+  });
 };
 
 /**
  * Create the contact list
- * @param {!Contact[]} contacts - array of contacts to be rendered
- * @param {!function} deleteHandler - function that will be execute to delete an item
  * @returns {HTMLDivElement}
  */
-function createContactListElement(contacts, deleteHandler, addHandler) {
+function createContactListElement() {
+  const contacts = getVisibleContacts();
+
   const contactListTpl = document.getElementById('contact-list-tpl');
   const contactListElement = contactListTpl.content.cloneNode(true)
     .firstElementChild;
+
+  const listElement = contactListElement.querySelector('.list');
+  const newContactButton = contactListElement.querySelector('button');
+
   const fragment = document.createDocumentFragment();
-  const newContactButton = document.createElement('button');
-  newContactButton.textContent = 'Nuevo';
-  newContactButton.className = 'btn btn-primary mt-4';
-  newContactButton.addEventListener('click', addHandler);
+
+  newContactButton.addEventListener('click', handleAdd);
+
   if (contacts.length === 0) {
     const pElement = document.createElement('p');
     pElement.textContent = 'No Contacts';
     fragment.appendChild(pElement);
   } else {
     for (const contact of contacts) {
-      const contactEl = Contact(contact, editHandler, deleteHandler);
+      const contactEl = Contact(contact);
       fragment.appendChild(contactEl);
     }
   }
-  contactListElement.appendChild(fragment);
-  contactListElement.appendChild(newContactButton);
+
+  listElement.addEventListener('click', handleClick);
+  listElement.appendChild(fragment);
+
   return contactListElement;
 }
 

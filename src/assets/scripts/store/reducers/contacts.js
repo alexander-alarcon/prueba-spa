@@ -6,7 +6,7 @@ import '../../typedefs';
  * @param {ActionPayload} action
  * @returns {Object}
  */
-const contactReducer = (state, { type, payload }) => {
+const contactReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case 'ADD_CONTACT': {
       const { id } = payload;

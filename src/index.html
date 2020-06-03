@@ -61,7 +61,7 @@
     </footer>
 
     <template id="search-bar-tpl">
-      <div class="p-4 border-2 rounded-lg shadow-md">
+      <form name="search" class="p-4 border-2 rounded-lg shadow-md">
         <div class="flex flex-col sm:flex-row w-10/12 mx-auto">
           <div
             class="flex flex-1 sm:mr-3 p-3 border-2 border-primary rounded-lg"
@@ -87,15 +87,18 @@
               class="flex flex-1 w-full outline-none"
             />
           </div>
-          <button class="btn btn-primary mt-3 sm:mt-0">
+          <button class="btn btn-primary mt-3 sm:mt-0" type="submit">
             Search
           </button>
         </div>
-      </div>
+      </form>
     </template>
 
     <template id="contact-list-tpl">
-      <div class="p-4 border-2 rounded-lg shadow-md"></div>
+      <div class="p-4 border-2 rounded-lg shadow-md">
+        <div class="list"></div>
+        <button class="btn btn-primary mt-4">Nuevo</button>
+      </div>
     </template>
 
     <template id="contact-tpl">
@@ -119,8 +122,12 @@
         <div
           class="actions flex flex-col justify-evenly mt-4 sm:mt-0 p-0 sm:pl-4"
         >
-          <button class="btn btn-primary my-1">Editar</button>
-          <button class="btn btn-primary my-1">Eliminar</button>
+          <button class="btn btn-primary my-1" data-action="edit">
+            Editar
+          </button>
+          <button class="btn btn-primary my-1" data-action="delete">
+            Eliminar
+          </button>
         </div>
       </div>
     </template>

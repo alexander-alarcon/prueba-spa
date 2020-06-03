@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const store = ((initialState, reducers) => {
-  let state = initialState;
+  let state = reducers(initialState, {});
   let listeners = [];
 
   function getState() {

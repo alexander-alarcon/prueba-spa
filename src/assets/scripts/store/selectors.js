@@ -5,20 +5,29 @@ import store from './';
  * @param {string=} filter
  * @returns {Object}
  */
-const getVisibleContacts = (filter) => {
-  const { contacts } = store.getState();
+export const getVisibleContacts = () => {
+  const { contacts, search } = store.getState();
 
-  const f = '99';
-  if (f) {
-    return Object.keys(contacts)
-      .map((key) => contacts[key])
-      .filter((contact) => {
-        console.log(contact);
-        return contact.name.toLowerCase().includes(f.toLowerCase());
-      });
+  const results = Object.keys(contacts)
+    .map((key) => contacts[key])
+    .sort((a, b) => {
+      if (b.name.toLowerCase() > a.name.toLowerCase()) return -1;
+      if (b.name.toLowerCase() < a.name.toLowerCase()) return 1;
+      return 0;
+    });
+
+  const searchValue = search.trim().toLowerCase();
+
+  if (searchValue) {
+    return results.filter((contact) => {
+      return contact.name.toLowerCase().includes(searchValue);
+    });
   }
 
-  return Object.keys(contacts).map((key) => contacts[key]);
+  return results;
 };
 
-export { getVisibleContacts };
+export const getUserSearch = () => {
+  const { search } = store.getState();
+  return search;
+};

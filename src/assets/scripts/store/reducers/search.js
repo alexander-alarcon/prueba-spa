@@ -1,0 +1,19 @@
+import '../../typedefs';
+
+/**
+ * Reducer for contacts
+ * @param {Object} state - initialState
+ * @param {ActionPayload} action
+ * @returns {Object}
+ */
+const searchReducer = (state = '', { type, payload }) => {
+  switch (type) {
+    case 'TYPE_SEARCH': {
+      return payload;
+    }
+    default:
+      return state;
+  }
+};
+
+export default searchReducer;
