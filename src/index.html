@@ -137,16 +137,20 @@
       <div
         class="modal-ovarlay absolute top-0 left-0 w-full h-full bg-black bg-opacity-25 z-1"
       ></div>
-      <div class="relative table w-2/3 h-full z-30 mx-auto pointer-events-none">
+      <div
+        class="relative table max-w-4/5 h-full z-30 mx-auto pointer-events-none"
+      >
         <div class="table-cell align-middle">
-          <div class="modal-body p-4 bg-white rounded-lg pointer-events-auto">
-            <div class="flex justify-end border-b-2">
-              <button class="modal-close btn">X</button>
+          <div class="p-4 bg-white rounded-lg pointer-events-auto">
+            <div class="modal-body">
+              <div class="flex justify-end border-b-2">
+                <button class="modal-close btn">X</button>
+              </div>
+              <div class="mt-4 px-4"></div>
             </div>
-            <div class="mt-4 px-4"></div>
+            <div class="modal-actions border-t-2 mt-4 pt-4"></div>
           </div>
         </div>
-        <div class="modal-actions"></div>
       </div>
     </div>
   </body>
