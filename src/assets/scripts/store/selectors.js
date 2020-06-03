@@ -28,9 +28,21 @@ export const getVisibleContacts = () => {
 };
 
 /**
+ * Returns input filter value
  * @returns {string}
  */
 export const getUserSearch = () => {
   const { search } = store.getState();
   return search;
+};
+
+/**
+ * Returns modal status
+ * @returns {boolean}
+ */
+export const getModalStatus = () => {
+  const {
+    ui: { isModalOpen },
+  } = store.getState();
+  return isModalOpen;
 };

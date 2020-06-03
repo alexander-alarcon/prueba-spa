@@ -1,5 +1,6 @@
 import typedefs from '../typedefs/';
 
+import { attachModalContent } from './modal';
 import Contact from './contact';
 
 import generateId from '../utils/generateId';
@@ -36,7 +37,7 @@ const handleClick = (e) => {
  * Dispacth an add action
  */
 const handleAdd = () => {
-  store.dispatch({
+  /* store.dispatch({
     type: 'ADD_CONTACT',
     payload: {
       id: generateId(),
@@ -44,7 +45,18 @@ const handleAdd = () => {
       address: `Calle Falsa ${Math.floor(Math.random() * 999)}`,
       phone: 1234567,
     },
-  });
+  }); */
+  const divElement = document.createElement('div');
+  divElement.innerHTML = `
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Sed non lacus pulvinar, accumsan nulla at, varius nibh.
+      Curabitur malesuada maximus rutrum. Duis tincidunt lorem ut pellentesque congue.
+      Sed ac pretium justo. Vestibulum semper est non purus lobortis volutpat. Proin justo magna,
+    </p>
+  `;
+  attachModalContent(divElement);
+  store.dispatch({ type: 'SHOW_MODAL' });
 };
 
 /**

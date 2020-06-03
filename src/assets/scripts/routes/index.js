@@ -1,4 +1,7 @@
 import { pages } from '../controllers/';
+
+import renderModalElement from '../components/modal';
+
 import store from '../store/';
 
 /**
@@ -25,6 +28,8 @@ const router = async (route) => {
         mainElement.appendChild(pages.notFound());
         break;
     }
+
+    renderModalElement();
   }
 
   render();

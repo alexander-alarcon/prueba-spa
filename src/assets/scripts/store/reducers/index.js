@@ -2,6 +2,7 @@ import '../../typedefs';
 
 import contactReducer from './contacts';
 import searchReducer from './search';
+import uiReducer from './ui';
 
 /**
  * Root reducer
@@ -13,6 +14,7 @@ const rootReducer = (state, action) => {
   return {
     contacts: contactReducer(state.contacts, action),
     search: searchReducer(state.search, action),
+    ui: uiReducer(state.ui, action),
   };
 };
 
