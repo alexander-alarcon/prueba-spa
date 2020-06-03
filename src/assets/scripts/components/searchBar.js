@@ -4,13 +4,21 @@ import store from '../store';
 let focusTimeout;
 let inputTimeout;
 
+/**
+ * Handle form submitision
+ * @param {!Event} e - Event that was triggered
+ */
 const handleSubmit = (e) => {
   e.preventDefault();
-  clearTimeout(inputTimeout);
+  e.clearTimeout(inputTimeout);
 
   store.dispatch({ type: 'TYPE_SEARCH', payload: e.target.search.value });
 };
 
+/**
+ * Handle input changes
+ * @param {!InputEvent} e
+ */
 const handleInputChange = (e) => {
   clearTimeout(inputTimeout);
 
@@ -21,7 +29,7 @@ const handleInputChange = (e) => {
 
 /**
  * Render the search bar
- * @returns {HTMLDivElement}
+ * @returns {HTMLFormElement}
  */
 function createFormElement() {
   clearTimeout(focusTimeout);

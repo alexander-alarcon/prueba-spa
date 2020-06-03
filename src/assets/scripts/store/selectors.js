@@ -27,6 +27,9 @@ export const getVisibleContacts = () => {
   return results;
 };
 
+/**
+ * @returns {string}
+ */
 export const getUserSearch = () => {
   const { search } = store.getState();
   return search;

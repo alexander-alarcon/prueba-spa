@@ -9,7 +9,7 @@ import store from '../store';
 
 /**
  * Dispacth a delete action
- * @param {!MouseEvent} id - Contact's id to be deleted
+ * @param {!MouseEvent} e - Event that was triggered
  */
 const handleClick = (e) => {
   const { target } = e;
