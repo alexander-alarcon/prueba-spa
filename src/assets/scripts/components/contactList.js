@@ -40,13 +40,12 @@ const handleClick = (e) => {
       divElement.appendChild(confirmButton);
       pElement.textContent = 'Are you sure to delete this contact?';
       attachModalContent(pElement, divElement);
+      store.dispatch({ type: 'SHOW_MODAL' });
     }
 
     if (action === 'edit') {
-      console.log(id);
+      window.location.hash = `#/contact/edit/${id}`;
     }
-
-    store.dispatch({ type: 'SHOW_MODAL' });
   }
 };
 
