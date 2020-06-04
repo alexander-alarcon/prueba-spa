@@ -38,7 +38,7 @@ const handleFormSubmit = (e) => {
     });
   }
 
-  window.location.hash = '#/';
+  window.location.hash = '';
 };
 
 /**
@@ -54,7 +54,6 @@ function createContactFormElement({ contact } = {}) {
   contactFormElement.addEventListener('submit', handleFormSubmit);
 
   if (contact) {
-    console.log(contact);
     contactFormElement.querySelector('input[name="id"]').value = contact.id;
     contactFormElement.querySelector('input[name="name"]').value = contact.name;
     contactFormElement.querySelector('input[name="address"]').value =

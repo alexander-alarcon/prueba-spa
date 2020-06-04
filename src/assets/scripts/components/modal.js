@@ -8,7 +8,7 @@ function handleCloseModal() {
 /**
  * Attach content to the modal
  * @param {!HTMLElement} content - Modal's body
- * @param {HTMLElement=} actions - Modal's action buttons
+ * @param {DocumentFragment=} actions - Modal's action buttons
  */
 export function attachModalContent(content, actions) {
   const modalElement = document.querySelector('.modal');

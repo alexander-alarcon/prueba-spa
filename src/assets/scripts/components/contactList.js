@@ -26,22 +26,23 @@ const handleClick = (e) => {
 
     if (action === 'delete') {
       const pElement = document.createElement('p');
-      const divElement = document.createElement('div');
+      const fragment = document.createDocumentFragment();
       const cancelButton = cretateButtonElement(
-        'Cancel',
+        'Cancelar',
         () => {
           store.dispatch({ type: 'CLOSE_MODAL' });
         },
-        'cancel'
+        'secondary'
       );
-      const confirmButton = cretateButtonElement('Accept', () => {
+      const confirmButton = cretateButtonElement('Aceptar', () => {
         store.dispatch({ type: 'REMOVE_CONTACT', payload: id });
         store.dispatch({ type: 'CLOSE_MODAL' });
       });
-      divElement.appendChild(cancelButton);
-      divElement.appendChild(confirmButton);
-      pElement.textContent = 'Are you sure to delete this contact?';
-      attachModalContent(pElement, divElement);
+      fragment.appendChild(cancelButton);
+      fragment.appendChild(confirmButton);
+      pElement.textContent =
+        '¿Está seguro de que quiere eliminar este contacto?';
+      attachModalContent(pElement, fragment);
       store.dispatch({ type: 'SHOW_MODAL' });
     }
 
@@ -69,7 +70,7 @@ function createContactListElement() {
 
   if (contacts.length === 0) {
     const pElement = document.createElement('p');
-    pElement.textContent = 'No Contacts';
+    pElement.textContent = 'No hay contactos para mostrar';
     fragment.appendChild(pElement);
   } else {
     for (const contact of contacts) {
