@@ -1,8 +1,10 @@
 import typedefs from '../typedefs/';
 
-import store from '../store';
+import { attachModalContent } from './modal';
+
 import { getUserById } from '../store/selectors';
 import generateId from '../utils/generateId';
+import store from '../store';
 
 /**
  * Handle form submission
@@ -13,6 +15,17 @@ const handleFormSubmit = (e) => {
 
   const { target } = e;
 
+  if (
+    target.name.value.trim() === '' ||
+    target.address.value.trim() === '' ||
+    target.phone.value.trim() === ''
+  ) {
+    const pElement = document.createElement('p');
+    pElement.textContent = 'Todos los campos son obligatorios';
+    attachModalContent(pElement);
+    store.dispatch({ type: 'SHOW_MODAL' });
+    return;
+  }
   /**
    * @type {Contact}
    */
