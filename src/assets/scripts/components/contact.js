@@ -1,4 +1,4 @@
-import typedefs from '../typedefs/';
+import '../typedefs/';
 
 /**
  * Create a contact card

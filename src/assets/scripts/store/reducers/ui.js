@@ -4,9 +4,9 @@ const initialState = {
 
 /**
  * Reducer for ui components
- * @param {Object} state - initialState
+ * @param {UIState} state - initialState
  * @param {ActionPayload} action
- * @returns {Object}
+ * @returns {UIState}
  */
 const uiReducer = (state = initialState, { type }) => {
   switch (type) {

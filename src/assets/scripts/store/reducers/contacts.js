@@ -2,13 +2,20 @@ import '../../typedefs';
 
 /**
  * Reducer for contacts
- * @param {Object} state - initialState
+ * @param {ContactState} state - initialState
  * @param {ActionPayload} action
- * @returns {Object}
+ * @returns {ContactState}
  */
 const contactReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case 'ADD_CONTACT': {
+      const { id } = payload;
+      return {
+        ...state,
+        [id]: payload,
+      };
+    }
+    case 'EDIT_CONTACT': {
       const { id } = payload;
       return {
         ...state,

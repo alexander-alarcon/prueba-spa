@@ -11,3 +11,31 @@
  * @property {!string} type - Action identifier
  * @property {*=} payload - Action payload
  */
+
+/**
+ * @typedef {Object} URLParams
+ * @property {string=} id - resource's id
+ */
+
+/**
+ * @typedef {Object} ContactState
+ * @property {Contact} [id]
+ */
+
+/**
+ * @typedef {string} SearchState
+ */
+
+/**
+ * @typedef {Object} UIState
+ * @property {boolean} isModalOpen
+ */
+
+/**
+ * @typedef {"primary" | "secondary"} ButtonType
+ */
+
+/**
+ * @typedef {Object} FormParams
+ * @property {Contact} contact
+ */

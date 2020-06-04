@@ -1,13 +1,22 @@
+import '../typedefs';
 import rootReducer from './reducers';
 
 const initialState = {
   contacts: JSON.parse(localStorage.getItem('contacts')) || {},
 };
 
+/**
+ * @callback storeCallback
+ * @param {ContactState}
+ * @returns {Object}
+ */
 const store = ((initialState, reducers) => {
   let state = reducers(initialState, {});
   let listeners = [];
 
+  /**
+   * @returns {ContactState}
+   */
   function getState() {
     return state;
   }
@@ -24,6 +33,11 @@ const store = ((initialState, reducers) => {
     });
   }
 
+  /**
+   * returns a unsubscribe function
+   * @param {function} listener
+   * @returns {function}
+   */
   function subscribe(listener) {
     listeners.push(listener);
 

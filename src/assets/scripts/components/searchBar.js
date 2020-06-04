@@ -5,8 +5,8 @@ let focusTimeout;
 let inputTimeout;
 
 /**
- * Handle form submitision
- * @param {!Event} e - Event that was triggered
+ * Handle form submission
+ * @param {!Event} e - Event triggered when form is submited
  */
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -17,7 +17,7 @@ const handleSubmit = (e) => {
 
 /**
  * Handle input changes
- * @param {!InputEvent} e
+ * @param {!InputEvent} e - Event triggered when input changes its value
  */
 const handleInputChange = (e) => {
   clearTimeout(inputTimeout);

@@ -8,7 +8,7 @@ const pages = [
     component: Home,
   },
   {
-    path: ['#/contact', '#/contact/edit/:id'],
+    path: ['#/contact/add', '#/contact/edit/:id'],
     component: Contact,
   },
   {

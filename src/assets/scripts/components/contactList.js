@@ -11,7 +11,7 @@ import store from '../store';
 
 /**
  * Dispacth a delete action
- * @param {!MouseEvent} e - Event that was triggered
+ * @param {!MouseEvent} e - Event triggered when button is clicked
  */
 const handleClick = (e) => {
   const { target } = e;
@@ -19,6 +19,8 @@ const handleClick = (e) => {
   const action = target.getAttribute('data-action');
 
   if (action) {
+    e.preventDefault();
+
     const ancestor = target.parentElement.parentElement;
     const id = ancestor.getAttribute('data-id');
 
@@ -50,21 +52,6 @@ const handleClick = (e) => {
 };
 
 /**
- * Dispacth an add action
- */
-const handleAdd = () => {
-  store.dispatch({
-    type: 'ADD_CONTACT',
-    payload: {
-      id: generateId(),
-      name: `Pepe ${Math.random() * 10}`,
-      address: `Calle Falsa ${Math.floor(Math.random() * 999)}`,
-      phone: 1234567,
-    },
-  });
-};
-
-/**
  * Create the contact list
  * @returns {HTMLDivElement}
  */
@@ -79,8 +66,6 @@ function createContactListElement() {
   const newContactButton = contactListElement.querySelector('button');
 
   const fragment = document.createDocumentFragment();
-
-  newContactButton.addEventListener('click', handleAdd);
 
   if (contacts.length === 0) {
     const pElement = document.createElement('p');

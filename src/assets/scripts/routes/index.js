@@ -24,10 +24,15 @@ function extractParamsFromMatch(match, path) {
 }
 
 /**
- *
- * @param {} path
+ * Parse URL to Regex
+ * @param {!string} path - Path to be parsed
+ * @returns {RegExp}
  */
 function pathToRegex(path) {
+  if (path === '') {
+    return new RegExp(/^$/);
+  }
+
   // prettier-ignore
   const regex = path.replace('/', '\/').replace(/:(\w+)/gi, '(\\w+)');
   return new RegExp(regex + '$');
@@ -49,7 +54,7 @@ const router = async (hash) => {
     mainElement.innerHTML = '';
 
     myFor: for (let page of pages) {
-      let match;
+      let match = -1;
 
       if (Array.isArray(page.path)) {
         match = page.path.filter((path) => {
@@ -58,10 +63,10 @@ const router = async (hash) => {
       } else if (page.path !== '*') {
         match = pathToRegex(page.path).test(hash) && page.path;
       } else {
-        match = '#/';
+        match = '';
       }
 
-      if (match) {
+      if (match !== -1 && typeof match !== 'undefined') {
         const params = extractParamsFromMatch(match, hash);
         mainElement.appendChild(page.component(params));
         break myFor;

@@ -1,15 +1,23 @@
+import '../typedefs';
+
+import createContactFormElement from '../components/contactForm';
+import { getUserById } from '../store/selectors';
+
 /**
  * Render the contact page
- * @param {Object=} params
- * @param {string} params.id - Contact's id
+ * @param {URLParams=} params - if params form is filled
+ * @returns {DocumentFragment}
  */
 function createContactPage({ id } = {}) {
-  if (!id) window.location.hash = '#/404';
+  let contact;
+
+  if (typeof id !== 'undefined') {
+    contact = getUserById(id);
+    if (!contact) window.location.hash = '#/404';
+  }
 
   const fragment = document.createDocumentFragment();
-  const p = document.createElement('p');
-  p.textContent = `id: ${id}`;
-  fragment.appendChild(p);
+  fragment.appendChild(createContactFormElement({ contact }));
   return fragment;
 }
 

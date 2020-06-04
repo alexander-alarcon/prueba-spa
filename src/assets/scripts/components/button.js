@@ -1,8 +1,4 @@
 /**
- * @typedef {"primary" | "cancel"} ButtonType
- */
-
-/**
  * Creates a button
  * @param {!string} text - Button's text
  * @param {!function} onClick - Function that will be executed when the button is clicked

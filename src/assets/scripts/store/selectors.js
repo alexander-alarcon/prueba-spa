@@ -3,7 +3,7 @@ import store from './';
 /**
  * Return contacts with or without filters
  * @param {string=} filter
- * @returns {Object}
+ * @returns {Contact[]}
  */
 export const getVisibleContacts = () => {
   const { contacts, search } = store.getState();
@@ -37,8 +37,19 @@ export const getUserSearch = () => {
 };
 
 /**
+ * Returns a contact
+ * @param {!string} id - Contact identifier
+ * @returns {(Contact|undefined)} Contact if exist or undifined
+ */
+export const getUserById = (id) => {
+  const { contacts } = store.getState();
+
+  return contacts[id];
+};
+
+/**
  * Returns modal status
- * @returns {boolean}
+ * @returns {boolean} true if modal is open
  */
 export const getModalStatus = () => {
   const {

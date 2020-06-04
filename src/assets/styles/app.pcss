@@ -12,13 +12,20 @@
 }
 
 .btn-primary {
-  @apply border-primary border-2 text-primary transition-colors duration-200 ease-in-out
+  @apply border-primary border-2 text-white bg-primary transition-colors duration-200 ease-in-out
 }
 
 .btn-primary:hover {
-  @apply bg-primary text-white
+  @apply bg-transparent text-primary
 }
 
+.btn-secondary {
+  @apply border-third border-2 text-primary bg-contrast transition-colors duration-200 ease-in-out
+}
+
+.btn-secondary:hover {
+  @apply bg-third text-primary
+}
 
 * {
   box-sizing: border-box

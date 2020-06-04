@@ -6,7 +6,7 @@ function handleCloseModal() {
 }
 
 /**
- *
+ * Attach content to the modal
  * @param {!HTMLElement} content - Modal's body
  * @param {HTMLElement=} actions - Modal's action buttons
  */

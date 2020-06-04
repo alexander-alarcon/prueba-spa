@@ -1,6 +1,6 @@
 /**
  * Generates an unique identifier
- * @returns {string}
+ * @returns {string} random generated Id
  */
 function generateId() {
   let timestamp = ((new Date().getTime() / 1000) | 0).toString(16);

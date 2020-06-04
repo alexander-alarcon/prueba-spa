@@ -11,7 +11,9 @@
     <title>SPA JS Vanilla</title>
     <script type="module" src="./assets/scripts/app.js" defer></script>
   </head>
-  <body class="h-screen flex flex-col font-sans bg-first text-second">
+  <body
+    class="h-screen flex flex-col font-sans bg-first text-second bg-gray-100"
+  >
     <header id="header">
       <nav class="bg-primary">
         <div
@@ -62,10 +64,10 @@
     </footer>
 
     <template id="search-bar-tpl">
-      <form name="search" class="p-4 border-2 rounded-lg shadow-md">
+      <form name="search" class="p-4 mb-4">
         <div class="flex flex-col sm:flex-row w-10/12 mx-auto">
           <div
-            class="flex flex-1 sm:mr-3 p-3 border-2 border-primary rounded-lg"
+            class="flex flex-1 sm:mr-3 p-3 border-2 border-primary rounded-lg bg-white"
           >
             <div class="mr-3">
               <svg
@@ -85,7 +87,7 @@
               type="text"
               placeholder="Search..."
               name="search"
-              class="flex flex-1 w-full outline-none"
+              class="flex flex-1 w-full outline-none bg-white"
             />
           </div>
           <button class="btn btn-primary mt-3 sm:mt-0" type="submit">
@@ -96,41 +98,112 @@
     </template>
 
     <template id="contact-list-tpl">
-      <div class="p-4 border-2 rounded-lg shadow-md">
+      <div class="p-4">
         <div class="list"></div>
-        <button class="btn btn-primary mt-4">Nuevo</button>
+        <a href="/#/contact/add" class="inline-block btn btn-primary mt-4"
+          >Nuevo</a
+        >
       </div>
     </template>
 
     <template id="contact-tpl">
-      <div class="flex flex-col sm:flex-row p-4 border-2 rounded-lg shadow-md">
-        <div
-          class="flex flex-col flex-1 justify-center p-4 border-2 border-primary"
-        >
-          <div class="name-group flex flex-col sm:flex-row w-full">
+      <div
+        class="flex flex-col sm:flex-row p-4 mb-4 rounded-lg shadow-md bg-white"
+      >
+        <div class="flex flex-col flex-1 justify-center p-4">
+          <div
+            class="name-group flex flex-col sm:flex-row w-full py-2 border-b"
+          >
             <span class="inline-block w-1/3">Nombre:</span>
             <span class="w-2/3"></span>
           </div>
-          <div class="address-group flex flex-col sm:flex-row w-full">
+          <div
+            class="address-group flex flex-col sm:flex-row w-full py-2 border-b"
+          >
             <span class="inline-block w-1/3">Dirección:</span>
             <span class="w-2/3"></span>
           </div>
-          <div class="phone-group flex flex-col sm:flex-row w-full">
+          <div class="phone-group flex flex-col sm:flex-row w-full py-2">
             <span class="inline-block w-1/3">Teléfono:</span>
             <span class="w-2/3"></span>
           </div>
         </div>
         <div
-          class="actions flex flex-col justify-evenly mt-4 sm:mt-0 p-0 sm:pl-4"
+          class="actions flex flex-col justify-center mt-4 sm:mt-0 p-0 sm:pl-4"
         >
           <button class="btn btn-primary my-1" data-action="edit">
             Editar
           </button>
-          <button class="btn btn-primary my-1" data-action="delete">
+          <button class="btn btn-secondary my-1" data-action="delete">
             Eliminar
           </button>
         </div>
       </div>
+    </template>
+
+    <template id="contact-form-tpl">
+      <form class="contact-form p-4 border-2 rounded-lg shadow-md">
+        <input type="hidden" name="id" />
+
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label
+              class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
+              for="name"
+            >
+              Nombre:
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input
+              class="bg-gray-200 appearance-none border-2 border-secondary rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
+              id="name"
+              name="name"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label
+              class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
+              for="address"
+            >
+              Dirección:
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input
+              class="bg-gray-200 appearance-none border-2 border-secondary rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
+              id="address"
+              name="address"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="md:flex md:items-center mb-6">
+          <div class="md:w-1/3">
+            <label
+              class="block font-bold md:text-right mb-1 md:mb-0 pr-4"
+              for="phone"
+            >
+              Teléfono:
+            </label>
+          </div>
+          <div class="md:w-2/3">
+            <input
+              class="bg-gray-200 appearance-none border-2 border-secondary rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
+              id="phone"
+              name="phone"
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <button class="btn btn-secondary mx-2" type="reset">Limpiar</button>
+          <button class="btn btn-primary ml-2" type="submit">Guardar</button>
+        </div>
+      </form>
     </template>
 
     <div class="modal fixed hidden z-10 w-full h-full">

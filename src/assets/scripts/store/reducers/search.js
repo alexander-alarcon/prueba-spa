@@ -2,9 +2,9 @@ import '../../typedefs';
 
 /**
  * Reducer for contacts
- * @param {Object} state - initialState
+ * @param {SearchState} state - initialState
  * @param {ActionPayload} action
- * @returns {Object}
+ * @returns {SearchState}
  */
 const searchReducer = (state = '', { type, payload }) => {
   switch (type) {
